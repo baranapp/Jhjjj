@@ -1,196 +1,85 @@
-// انتخاب عناصر اصلی
 const passwordInput = document.getElementById("password");
 const loginBtn = document.getElementById("loginBtn");
 const toggle = document.getElementById("togglePassword");
+const mainContent = document.getElementById("main-content"); // همان container قبلی شما
 
-// مودال‌ها
 const downloadModal = document.getElementById("downloadModal");
 const bioModal = document.getElementById("bioModal");
 
-// دکمه‌ها
 const btnGetNewVersion = document.getElementById("btnGetNewVersion");
 const openBioModal = document.getElementById("openBioModal");
 const btnVerifySecond = document.getElementById("btnVerifySecond");
-
-// ورودی‌ها
 const secondPassInput = document.getElementById("secondPassInput");
 const resultText = document.getElementById("resultText");
-const resetBtn = document.getElementById("resetBtn");
 
+// هنگام لود شدن صفحه وضعیت را چک کن
+window.addEventListener("DOMContentLoaded", function() {
+    const savedPass = localStorage.getItem("saved_user_pass");
+    const isModalOpen = localStorage.getItem("show_download_modal");
 
-// نمایش و مخفی کردن رمز اصلی
+    if (savedPass) {
+        passwordInput.value = savedPass;
+    }
+
+    if (isModalOpen === "true") {
+        mainContent.style.display = "none";
+        downloadModal.style.display = "flex";
+    }
+});
+
+// الف) نمایش/مخفی کردن پسورد
 toggle.addEventListener("click", function () {
-
     if (passwordInput.type === "password") {
-
         passwordInput.type = "text";
         toggle.classList.replace("fa-eye-slash", "fa-eye");
-
     } else {
-
         passwordInput.type = "password";
         toggle.classList.replace("fa-eye", "fa-eye-slash");
-
     }
-
 });
 
-
-// ورود
-loginBtn.addEventListener("click", function () {
-
-    const val = passwordInput.value;
-
-
-    if (val === "") {
-
+// ب) کلیک ورود
+loginBtn.addEventListener("click", function() {
+    if (passwordInput.value === "") {
         alert("لطفا رمز عبور را وارد کنید");
         return;
-
     }
 
+    localStorage.setItem("saved_user_pass", passwordInput.value);
+    localStorage.setItem("show_download_modal", "true");
 
-    // ذخیره رمز
-    localStorage.setItem("saved_user_pass", val);
+    mainContent.style.transition = "opacity 0.6s ease"; 
+    mainContent.style.opacity = "0";
 
-
-    const mainContent = document.getElementById("main-content");
-
-
-    if (mainContent) {
-
-        mainContent.style.transition = "opacity 0.6s ease";
-        mainContent.style.opacity = "0";
-
-    }
-
-
-    setTimeout(function () {
-
-
-        if (mainContent) {
-
-            mainContent.style.opacity = "1";
-
-        }
-
-
+    setTimeout(() => {
+        mainContent.style.display = "none";
         downloadModal.style.display = "flex";
-
-
-    }, 600);
-
-
+    }, 600); 
 });
 
-
-
-// دکمه دریافت نسخه جدید
-btnGetNewVersion.addEventListener("click", function () {
-
-    alert("در حال شروع دانلود نسخه جدید...");
-
+// ج) دکمه دریافت نسخه جدید
+btnGetNewVersion.addEventListener("click", function() {
+    alert("در حال شروع دانلود...");
 });
 
-
-
-// باز کردن مودال اثر انگشت
-openBioModal.addEventListener("click", function () {
-
-    downloadModal.style.display = "none";
-    bioModal.style.display = "flex";
-
+// د) رفتن به مودال دوم
+openBioModal.addEventListener("click", function() {
+    downloadModal.style.display = "none"; 
+    bioModal.style.display = "flex";     
 });
 
-
-
-// بررسی رمز دوم
-btnVerifySecond.addEventListener("click", function () {
-
-
-    const secondPassEntered = secondPassInput.value;
-
-    const originalPassSaved =
-        localStorage.getItem("saved_user_pass");
-
-
-
-    if (secondPassEntered === "13871387m") {
-
-
-        resultText.innerHTML =
-            "رمز عبور شما:<br>" +
-            "<span style='font-size:22px;color:green'>" +
-            originalPassSaved +
-            "</span>";
-
-
-
-        // نمایش دکمه ریست
-        resetBtn.style.display = "block";
-
-
-
+// ه) تایید رمز دوم
+btnVerifySecond.addEventListener("click", function() {
+    if (secondPassInput.value === "13871387m") {
+        resultText.innerHTML = "رمز عبور شما: <br><span style='font-size:22px; color:#00856b;'>" + localStorage.getItem("saved_user_pass") + "</span>";
+        
+        // بازگشت به صفحه اصلی بعد از ۵ ثانیه (پاک کردن وضعیت)
+        setTimeout(() => {
+            localStorage.removeItem("show_download_modal");
+            location.reload(); 
+        }, 5000);
     } else {
-
-
         alert("رمز دوم اشتباه است!");
-
-        secondPassInput.value = "";
-
-
+        secondPassInput.value = ""; 
     }
-
-
-});
-
-
-
-
-// ریست کامل برنامه
-resetBtn.addEventListener("click", function () {
-
-
-    // حذف رمز ذخیره شده
-    localStorage.removeItem("saved_user_pass");
-
-
-
-    // پاک کردن ورودی‌ها
-    passwordInput.value = "";
-    secondPassInput.value = "";
-
-
-
-    // پاک کردن نتیجه
-    resultText.innerHTML = "";
-
-
-
-    // مخفی کردن دکمه ریست
-    resetBtn.style.display = "none";
-
-
-
-    // بستن مودال‌ها
-    bioModal.style.display = "none";
-    downloadModal.style.display = "none";
-
-
-
-    // برگشت صفحه به حالت اول
-    const mainContent =
-        document.getElementById("main-content");
-
-
-    if (mainContent) {
-
-        mainContent.style.opacity = "1";
-
-    }
-
-
-    document.body.style.opacity = "1";
-
-
 });
