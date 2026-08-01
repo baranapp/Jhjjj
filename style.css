@@ -1,0 +1,153 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Vazirmatn",sans-serif;
+}
+
+body{
+background:#ffffff;
+display:flex;
+justify-content:center;
+align-items:flex-start;
+min-height:100vh;
+}
+
+.container{
+width:100%;
+max-width:430px;
+padding:25px;
+}
+
+.logo-area{
+text-align:center;
+margin-top:30px;
+}
+
+.logo{
+width:150px;
+margin-bottom:20px;
+}
+
+.logo-area h2{
+font-size:32px;
+font-weight:700;
+color:#243445;
+margin-bottom:10px;
+}
+
+.logo-area p{
+font-size:18px;
+color:#666;
+margin-bottom:45px;
+}
+
+.password-box{
+position:relative;
+height:58px;
+border:2px solid #d8d8d8;
+border-radius:14px;
+display:flex;
+align-items:center;
+padding:0 18px;
+margin-bottom:24px;
+background:#fff;
+}
+
+.password-box input{
+width:100%;
+height:100%;
+border:none;
+outline:none;
+font-size:20px;
+background:transparent;
+text-align:right;
+padding:0 45px;
+color:#222;
+}
+
+.password-box input::placeholder{
+color:#666;
+}
+
+.left-icon{
+position:absolute;
+left:18px;
+font-size:26px;
+color:#008b79;
+cursor:pointer;
+}
+
+.right-icon{
+position:absolute;
+right:18px;
+font-size:22px;
+color:#b8bcc3;
+}
+
+.login-btn{
+width:100%;
+height:58px;
+border:none;
+border-radius:10px;
+background:#00796b;
+color:#fff;
+font-size:23px;
+cursor:pointer;
+transition:.2s;
+}
+
+.login-btn:active{
+transform:scale(.98);
+}
+
+.bio{
+margin-top:28px;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+font-size:24px;
+color:#00796b;
+font-weight:500;
+}
+
+.bio i{
+font-size:36px;
+}
+
+.services-title{
+margin-top:150px;
+text-align:center;
+font-size:22px;
+color:#555;
+margin-bottom:25px;
+}
+
+.buttons{
+display:flex;
+gap:14px;
+}
+
+.buttons button{
+flex:1;
+height:58px;
+background:#fff;
+border:2px solid #d7e7e2;
+border-radius:12px;
+font-size:21px;
+color:#006d61;
+cursor:pointer;
+transition:.2s;
+}
+
+.buttons button:active{
+background:#f4f4f4;
+}
+.logo-text{
+    font-size:48px;
+    font-weight:700;
+    color:#00806d;
+    margin-bottom:20px;
+    letter-spacing:1px;
+}
