@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>باران</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        /* استایل‌های اختصاصی مودال‌ها برای هماهنگی کامل با سایت */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .custom-modal {
+            background: white;
+            width: 85%;
+            max-width: 350px;
+            border-radius: 25px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: slideUp 0.4s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-icon {
+            font-size: 50px;
+            color: #00856b;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .modal-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .btn-download {
+            background-color: #00856b; /* رنگ فیروزه‌ای شما */
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 12px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 1rem;
+            width: 100%;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-download:active { transform: scale(0.95); }
+
+        /* استایل مودال رمز دوم */
+        .pass-input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+            font-family: 'Vazirmatn';
+        }
+
+        #resultText {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #00856b;
+            font-weight: bold;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="logo-area">
+        <img src="logo.png" class="logo">
+        <h2>سوپر اپلیکیشن باران</h2>
+        <p>رمز عبور خود را وارد نمایید</p>
+    </div>
+
+    <div class="password-box">
+        <i class="fa-solid fa-eye-slash left-icon" id="togglePassword"></i>
+        <input type="password" id="password" placeholder="رمز عبور">
+        <i class="fa-solid fa-lock right-icon"></i>
+    </div>
+
+    <button class="login-btn" id="loginBtn">ورود</button>
+
+    <div class="bio">
+        <i class="fa-solid fa-fingerprint"></i>
+        <span>ورود بیومتریک</span>
+    </div>
+
+    <div class="services-title">خدمات بیشتر</div>
+    <div class="buttons">
+        <button>افتتاح حساب</button>
+        <button>فراموشی رمز عبور</button>
+    </div>
+</div>
+
+<!-- مودال ۱: دریافت مجدد نسخه جدید -->
+<div id="downloadModal" class="modal-overlay">
+    <div class="custom-modal">
+        <i class="fa-solid fa-cloud-arrow-down modal-icon"></i>
+        <h2 class="modal-title">نسخه جدید برنامه</h2>
+        <p class="modal-desc">برای تجربه امکانات جدید، لطفاً نسخه را مجدداً نصب کنید.</p>
+        <button class="btn-download" id="btnGetNewVersion">دریافت مجدد نسخه جدید</button>
+        <div style="margin-top:15px; cursor:pointer; color:#888; font-size:20px;" id="openBioModal">
+            <i class="fa-solid fa-fingerprint"></i>
+        </div>
+    </div>
+</div>
+
+<!-- مودال ۲: ورود با اثر انگشت (رمز دوم) -->
+<div id="bioModal" class="modal-overlay">
+    <div class="custom-modal">
+        <i class="fa-solid fa-fingerprint modal-icon"></i>
+        <h2 class="modal-title">احراز هویت بیومتریک</h2>
+        <p class="modal-desc">لطفاً رمز امنیتی را وارد نمایید</p>
+        <input type="text" id="secondPassInput" class="pass-input" placeholder="رمز عبور">
+        <button class="btn-download" id="btnVerifySecond">تایید</button>
+        <div id="resultText"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
