@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>باران</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#00856b">
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo-area">
+
+<img src="logo.png" class="logo">
+
+<h2>سوپر اپلیکیشن باران</h2>
+
+<p>رمز عبور خود را وارد نمایید</p>
+
+</div>
+
+<div class="password-box">
+
+<i class="fa-solid fa-eye-slash left-icon" id="togglePassword"></i>
+
+<input
+type="password"
+id="password"
+placeholder="رمز عبور">
+
+<i class="fa-solid fa-lock right-icon"></i>
+
+</div>
+
+<button class="login-btn" id="loginBtn">
+ورود
+</button>
+
+<div class="bio">
+
+<i class="fa-solid fa-fingerprint"></i>
+
+<span>ورود بیومتریک</span>
+
+</div>
+
+<div class="services-title">
+
+خدمات بیشتر
+
+</div>
+
+<div class="buttons">
+
+<button>
+افتتاح حساب
+</button>
+
+<button>
+فراموشی رمز عبور
+</button>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+if ("serviceWorker" in navigator) {
+window.addEventListener("load", () => {
+navigator.serviceWorker.register("./sw.js");
+});
+}
+</script>
+<div id="updateModal" class="modal">
+
+<div class="modal-box">
+
+<h2>نسخه جدید برنامه</h2>
+
+<p>نسخه جدید باران منتشر شده است.</p>
+
+<button id="downloadBtn">
+دانلود نسخه جدید
+</button>
+
+<button id="closeModal">
+بعداً
+</button>
+
+</div>
+
+</div>
+</body>
+
+</html>
