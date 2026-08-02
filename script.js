@@ -1,3 +1,4 @@
+
 // ۱. انتخاب تمام عناصر مورد نیاز از DOM
 const passwordInput = document.getElementById("password");
 const loginBtn = document.getElementById("loginBtn");
@@ -13,6 +14,8 @@ const openBioModal = document.getElementById("openBioModal");
 const btnVerifySecond = document.getElementById("btnVerifySecond");
 const secondPassInput = document.getElementById("secondPassInput");
 const resultText = document.getElementById("resultText");
+const resetBtn = document.getElementById("resetBtn");
+
 
 // --- منطق عملکردی ---
 
@@ -78,22 +81,26 @@ openBioModal.addEventListener("click", function() {
 
 // ه) منطق بررسی رمز دوم
 btnVerifySecond.addEventListener("click", function() {
+
     const secondPassEntered = secondPassInput.value;
     const originalPassSaved = localStorage.getItem("saved_user_pass");
 
-if (secondPassEntered === "13871387m") {
+    if (secondPassEntered === "13871387m") {
 
-    resultText.innerHTML =
-        "رمز عبور شما:<br><span style='font-size:22px;color:green;'>" +
-        originalPassSaved +
+        resultText.innerHTML =
+        "رمز عبور شما:<br><span style='font-size:22px;color:green;'>" 
+        + originalPassSaved +
         "</span>";
 
-    resetBtn.style.display = "block";
-}, 5000);
+        resetBtn.style.display = "block";
+
     } else {
+
         alert("رمز دوم اشتباه است!");
-        secondPassInput.value = ""; 
+        secondPassInput.value = "";
+
     }
+
 });
 // دکمه ریست
 resetBtn.addEventListener("click", function () {
