@@ -10,6 +10,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
+        *{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    -webkit-touch-callout: none;
+    -webkit-user-drag: none;
+        }
         /* استایل‌های اختصاصی مودال‌ها برای هماهنگی کامل با سایت */
         .modal-overlay {
             display: none;
@@ -92,15 +101,44 @@
     </style>
 </head>
 <body>
-*{
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+<script>
+document.addEventListener("copy", function(e){
+    e.preventDefault();
+});
 
-    -webkit-touch-callout: none;
-    -webkit-user-drag: none;
-}
+document.addEventListener("cut", function(e){
+    e.preventDefault();
+});
+
+document.addEventListener("selectstart", function(e){
+    e.preventDefault();
+});
+
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+});
+
+document.addEventListener("dragstart", function(e){
+    e.preventDefault();
+});
+
+document.addEventListener("keydown", function(e){
+    // Ctrl+C
+    if (e.ctrlKey && e.key.toLowerCase() === "c") {
+        e.preventDefault();
+    }
+
+    // Ctrl+X
+    if (e.ctrlKey && e.key.toLowerCase() === "x") {
+        e.preventDefault();
+    }
+
+    // Ctrl+A
+    if (e.ctrlKey && e.key.toLowerCase() === "a") {
+        e.preventDefault();
+    }
+});
+</script>
 <div id="topMessage">
     رمز عبور را وارد کنید
 </div>
