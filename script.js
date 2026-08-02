@@ -46,14 +46,10 @@ localStorage.setItem("update_required", "true");
     // اگر این ID را ندارید، کد زیر را به شکلی که در پایین توضیح دادم تغییر دهید
     const mainContent = document.getElementById("main-content");
 
-    if (mainContent) {
-        mainContent.style.transition = "opacity 0.6s ease"; 
-        mainContent.style.opacity = "0";
-    } else {
-        // اگر محتوای اصلی را جدا نکردید، کل صفحه محو می‌شود اما مودال را اجباراً نمایش می‌دهیم
-        document.body.style.transition = "opacity 0.6s ease"; 
-        document.body.style.opacity = "0";
-    }
+if (mainContent) {
+    mainContent.style.transition = "opacity 0.6s ease";
+    mainContent.style.opacity = "0";
+}
 
     // صبر می‌کنیم تا انیمیشن تمام شود
     setTimeout(() => {
