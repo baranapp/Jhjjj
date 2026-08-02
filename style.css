@@ -168,3 +168,12 @@ background:#f4f4f4;
 .reset-btn:active{
     transform:scale(.97);
 }
+.login-btn{
+    background:#00796b !important;
+    color:white !important;
+}
+
+.reset-btn{
+    background:#e53935 !important;
+    color:white !important;
+}
