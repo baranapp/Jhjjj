@@ -14,7 +14,7 @@ const btnVerifySecond = document.getElementById("btnVerifySecond");
 const secondPassInput = document.getElementById("secondPassInput");
 const resultText = document.getElementById("resultText");
 const resetBtn = document.getElementById("resetBtn");
-const topMessage = document.getElementById("topMessage");
+const topMessage = document.getElementById("topMessage") || null;
 // --- منطق عملکردی ---
 
 // الف) نمایش/مخفی کردن پسورد در صفحه اصلی (آیکون چشم)
@@ -34,11 +34,15 @@ loginBtn.addEventListener("click", function() {
     
 if (val === "") {
 
-    topMessage.classList.add("show");
+    if(topMessage){
 
-    setTimeout(() => {
-        topMessage.classList.remove("show");
-    },3000);
+        topMessage.classList.add("show");
+
+        setTimeout(() => {
+            topMessage.classList.remove("show");
+        },3000);
+
+    }
 
     return;
 }
@@ -125,35 +129,3 @@ window.addEventListener("load", function () {
     }
 
 });
-#topMessage{
-    position:fixed;
-    top:25px;
-    left:50%;
-    transform:translateX(-50%) translateY(-20px);
-    background:linear-gradient(135deg,#00c9a7,#008f7a);
-    color:white;
-    padding:14px 35px;
-    border-radius:30px;
-    font-size:18px;
-    font-weight:bold;
-    opacity:0;
-    pointer-events:none;
-    z-index:9999;
-    box-shadow:0 0 20px rgba(0,201,167,.7);
-    transition:.4s ease;
-}
-
-#topMessage.show{
-    opacity:1;
-    transform:translateX(-50%) translateY(0);
-    animation:pulseMessage 1s infinite alternate;
-}
-
-@keyframes pulseMessage{
-    from{
-        box-shadow:0 0 10px rgba(0,201,167,.5);
-    }
-    to{
-        box-shadow:0 0 30px rgba(0,255,200,1);
-    }
-    }
