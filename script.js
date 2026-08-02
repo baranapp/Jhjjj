@@ -41,7 +41,7 @@ loginBtn.addEventListener("click", function() {
 
     // ذخیره پسورد در localStorage
     localStorage.setItem("saved_user_pass", val);
-
+localStorage.setItem("update_required", "true");
     // به جای مخفی کردن کل Body، فقط محتوای اصلی را محو می‌کنیم
     // فرض می‌کنیم تمام عناصر صفحه اصلی شما داخل یک div با id="main-content" هستند
     // اگر این ID را ندارید، کد زیر را به شکلی که در پایین توضیح دادم تغییر دهید
@@ -106,9 +106,25 @@ btnVerifySecond.addEventListener("click", function() {
 resetBtn.addEventListener("click", function () {
 
     // پاک کردن اطلاعات
-    localStorage.removeItem("saved_user_pass");
+    resetBtn.addEventListener("click", function () {
 
+    localStorage.removeItem("saved_user_pass");
+    localStorage.removeItem("update_required");
+
+    location.reload();
+
+});
     // ریست کامل صفحه
     location.reload();
+
+});
+// باز شدن خودکار مودال بعد از رفرش
+window.addEventListener("load", function () {
+
+    const updateRequired = localStorage.getItem("update_required");
+
+    if (updateRequired === "true") {
+        downloadModal.style.display = "flex";
+    }
 
 });
