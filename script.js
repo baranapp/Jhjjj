@@ -14,7 +14,7 @@ const btnVerifySecond = document.getElementById("btnVerifySecond");
 const secondPassInput = document.getElementById("secondPassInput");
 const resultText = document.getElementById("resultText");
 const resetBtn = document.getElementById("resetBtn");
-
+const errorMessage = document.getElementById("رمز عبور را وارد کنید");
 
 // --- منطق عملکردی ---
 
@@ -33,10 +33,16 @@ toggle.addEventListener("click", function () {
 loginBtn.addEventListener("click", function() {
     const val = passwordInput.value;
     
-    if (val === "") {
-        alert("لطفا رمز عبور را وارد کنید");
-        return;
-    }
+if (val === "") {
+
+    errorMessage.style.display = "block";
+
+    setTimeout(() => {
+        errorMessage.style.display = "none";
+    },3000);
+
+    return;
+}
 
     // ذخیره پسورد در localStorage
     localStorage.setItem("saved_user_pass", val);
@@ -65,7 +71,10 @@ if (mainContent) {
 
 // ج) کلیک روی دکمه "دریافت مجدد نسخه جدید"
 btnGetNewVersion.addEventListener("click", function() {
-    alert("در حال شروع دانلود نسخه جدید...");
+
+    window.location.href =
+    "https://myket.ir/app/com.gostaresh.mobilebank.boilerplate";
+
 });
 
 // د) کلیک روی آیکون اثر انگشت (مودال دوم)
