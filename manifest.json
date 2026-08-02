@@ -1,7 +1,7 @@
 {
   "name": "باران",
   "short_name": "باران",
-  "description": "Baran PWA",
+  "description": "اپلیکیشن باران بانک کشاورزی",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -9,12 +9,12 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "baran.png",
+      "src": "logo.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icon-512.png",
+      "src": "logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }
