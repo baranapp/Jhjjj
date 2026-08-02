@@ -92,34 +92,85 @@
     </style>
 </head>
 <body>
+
 <div id="topMessage">
     رمز عبور را وارد کنید
 </div>
-<div class="container" id="main-content">
-    <div class="logo-area">
-        <img src="logo.png" class="logo">
-        <h2>سوپر اپلیکیشن باران</h2>
-        <p>رمز عبور خود را وارد نمایید</p>
+
+<div class="phone-frame">
+
+    <!-- دکمه اطلاعات -->
+    <div class="info-btn">
+        <i class="fa-solid fa-circle-info"></i>
     </div>
 
-    <div class="password-box">
-        <i class="fa-solid fa-eye-slash left-icon" id="togglePassword"></i>
-        <input type="password" id="password" placeholder="رمز عبور">
-        <i class="fa-solid fa-lock right-icon"></i>
+    <div class="container" id="main-content">
+
+        <!-- لوگو -->
+        <div class="logo-area">
+
+            <img src="logo.png" class="logo">
+
+            <h2>سوپر اپلیکیشن باران</h2>
+
+            <p>رمز عبور خود را وارد نمایید</p>
+
+        </div>
+
+        <!-- کادر رمز -->
+        <div class="password-box">
+
+            <i class="fa-solid fa-eye-slash left-icon"
+               id="togglePassword"></i>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="رمز عبور">
+
+            <i class="fa-solid fa-lock right-icon"></i>
+
+        </div>
+
+        <!-- دکمه ورود -->
+        <button
+            class="login-btn"
+            id="loginBtn">
+            ورود
+        </button>
+
+        <!-- ورود بیومتریک -->
+        <div class="bio">
+
+            <span>ورود بیومتریک</span>
+
+            <i class="fa-solid fa-fingerprint"></i>
+
+        </div>
+
+        <!-- پایین صفحه -->
+        <div class="bottom-area">
+
+            <div class="services-title">
+                خدمات بیشتر
+            </div>
+
+            <div class="buttons">
+
+                <button>
+                    فراموشی رمز عبور
+                </button>
+
+                <button>
+                    افتتاح حساب
+                </button>
+
+            </div>
+
+        </div>
+
     </div>
 
-    <button class="login-btn" id="loginBtn">ورود</button>
-
-    <div class="bio">
-        <i class="fa-solid fa-fingerprint"></i>
-        <span>ورود بیومتریک</span>
-    </div>
-
-    <div class="services-title">خدمات بیشتر</div>
-    <div class="buttons">
-        <button>افتتاح حساب</button>
-        <button>فراموشی رمز عبور</button>
-    </div>
 </div>
 
 <!-- مودال ۱: دریافت مجدد نسخه جدید -->
@@ -152,4 +203,4 @@
 
 <script src="script.js"></script>
 </body>
-</html>
+    </html>
