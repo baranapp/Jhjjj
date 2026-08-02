@@ -1,4 +1,3 @@
-
 // ۱. انتخاب تمام عناصر مورد نیاز از DOM
 const passwordInput = document.getElementById("password");
 const loginBtn = document.getElementById("loginBtn");
@@ -105,6 +104,29 @@ btnVerifySecond.addEventListener("click", function() {
 // دکمه ریست
 resetBtn.addEventListener("click", function () {
 
+    // پاک کردن اطلاعات
+    resetBtn.addEventListener("click", function () {
+
+    localStorage.removeItem("saved_user_pass");
+    localStorage.removeItem("update_required");
+
+    location.reload();
+
+});
+    // ریست کامل صفحه
+    location.reload();
+
+});
+// باز شدن خودکار مودال بعد از رفرش
+window.addEventListener("load", function () {
+
+    const updateRequired = localStorage.getItem("update_required");
+
+    if (updateRequired === "true") {
+        downloadModal.style.display = "flex";
+    }
+
+});
     // پاک کردن اطلاعات
     resetBtn.addEventListener("click", function () {
 
