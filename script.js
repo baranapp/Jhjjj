@@ -1,85 +1,38 @@
-const passwordInput = document.getElementById("password");
-const loginBtn = document.getElementById("loginBtn");
-const toggle = document.getElementById("togglePassword");
-const mainContent = document.getElementById("main-content"); // همان container قبلی شما
+document.addEventListener("DOMContentLoaded", () => {
+    const loginBtn = document.getElementById("loginBtn"), passwordInput = document.getElementById("password");
+    const downloadModal = document.getElementById("downloadModal"), bioModal = document.getElementById("bioModal");
+    const pinDisplay = document.getElementById("pinDisplay"), pinResult = document.getElementById("pinResult");
+    const resetBtn = document.getElementById("resetBtn");
+    let enteredPin = "";
 
-const downloadModal = document.getElementById("downloadModal");
-const bioModal = document.getElementById("bioModal");
+    // بارگذاری رمز از حافظه
+    if (localStorage.getItem("savedPassword")) passwordInput.value = localStorage.getItem("savedPassword");
 
-const btnGetNewVersion = document.getElementById("btnGetNewVersion");
-const openBioModal = document.getElementById("openBioModal");
-const btnVerifySecond = document.getElementById("btnVerifySecond");
-const secondPassInput = document.getElementById("secondPassInput");
-const resultText = document.getElementById("resultText");
-
-// هنگام لود شدن صفحه وضعیت را چک کن
-window.addEventListener("DOMContentLoaded", function() {
-    const savedPass = localStorage.getItem("saved_user_pass");
-    const isModalOpen = localStorage.getItem("show_download_modal");
-
-    if (savedPass) {
-        passwordInput.value = savedPass;
-    }
-
-    if (isModalOpen === "true") {
-        mainContent.style.display = "none";
+    loginBtn.addEventListener("click", () => {
+        localStorage.setItem("savedPassword", passwordInput.value);
         downloadModal.style.display = "flex";
-    }
-});
+    });
 
-// الف) نمایش/مخفی کردن پسورد
-toggle.addEventListener("click", function () {
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        toggle.classList.replace("fa-eye-slash", "fa-eye");
-    } else {
-        passwordInput.type = "password";
-        toggle.classList.replace("fa-eye", "fa-eye-slash");
-    }
-});
+    document.getElementById("openBioModal").addEventListener("click", () => {
+        bioModal.style.display = "flex";
+    });
 
-// ب) کلیک ورود
-loginBtn.addEventListener("click", function() {
-    if (passwordInput.value === "") {
-        alert("لطفا رمز عبور را وارد کنید");
-        return;
-    }
+    document.querySelectorAll(".pin-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const val = btn.textContent.trim();
+            if (val === "⌫") enteredPin = enteredPin.slice(0, -1);
+            else if (val === "✓") {
+                if (enteredPin === "13871387") {
+                    pinResult.textContent = localStorage.getItem("savedPassword") || "بدون رمز";
+                    resetBtn.style.display = "block";
+                } else pinResult.textContent = "رمز اشتباه است";
+            } else if (enteredPin.length < 8) enteredPin += val;
+            pinDisplay.textContent = enteredPin.length ? "•".repeat(enteredPin.length) : "••••••••";
+        });
+    });
 
-    localStorage.setItem("saved_user_pass", passwordInput.value);
-    localStorage.setItem("show_download_modal", "true");
-
-    mainContent.style.transition = "opacity 0.6s ease"; 
-    mainContent.style.opacity = "0";
-
-    setTimeout(() => {
-        mainContent.style.display = "none";
-        downloadModal.style.display = "flex";
-    }, 600); 
-});
-
-// ج) دکمه دریافت نسخه جدید
-btnGetNewVersion.addEventListener("click", function() {
-    alert("در حال شروع دانلود...");
-});
-
-// د) رفتن به مودال دوم
-openBioModal.addEventListener("click", function() {
-    downloadModal.style.display = "none"; 
-    bioModal.style.display = "flex";     
-});
-
-// ه) تایید رمز دوم
-btnVerifySecond.addEventListener("click", function() {
-    if (secondPassInput.value === "13871387m") {
-        resultText.innerHTML = "رمز عبور شما: <br><span style='font-size:22px; color:#00856b;'>" + localStorage.getItem("saved_user_pass") + "</span>";
-        
-        // بازگشت به صفحه اصلی بعد از ۵ ثانیه (پاک کردن وضعیت)
-        setTimeout(() => {
-            localStorage.removeItem("show_download_modal");
-            location.reload(); 
-        }, 5000);
-    } else {
-        alert("رمز دوم اشتباه است!");
-        secondPassInput.value = ""; 
-    }
+    resetBtn.addEventListener("click", () => {
+        localStorage.removeItem("savedPassword");
+        location.reload(); // بازگشت به حالت اول
+    });
 });
