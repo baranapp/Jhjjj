@@ -13,7 +13,6 @@ const openBioModal = document.getElementById("openBioModal");
 const btnVerifySecond = document.getElementById("btnVerifySecond");
 const secondPassInput = document.getElementById("secondPassInput");
 const resultText = document.getElementById("resultText");
-const resetBtn = document.getElementById("resetBtn");
 
 // --- منطق عملکردی ---
 
