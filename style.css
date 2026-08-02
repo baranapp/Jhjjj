@@ -1,225 +1,479 @@
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:"Vazirmatn",sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Vazirmatn",sans-serif;
 }
 
 body{
-background:#ffffff;
-display:flex;
-justify-content:center;
-align-items:flex-start;
-min-height:100vh;
+    background:#eeeeee;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-.container{
-width:100%;
-max-width:430px;
-padding:25px;
+
+/* قاب گوشی */
+.phone-frame{
+
+    width:390px;
+    height:844px;
+
+    background:white;
+
+    position:relative;
+
+    overflow:hidden;
+
 }
 
-.logo-area{
-text-align:center;
-margin-top:30px;
-}
 
-.logo{
-width:150px;
-margin-bottom:20px;
-}
-
-.logo-area h2{
-font-size:32px;
-font-weight:700;
-color:#243445;
-margin-bottom:10px;
-}
-
-.logo-area p{
-font-size:18px;
-color:#666;
-margin-bottom:45px;
-}
-
-.password-box{
-position:relative;
-height:58px;
-border:2px solid #d8d8d8;
-border-radius:14px;
-display:flex;
-align-items:center;
-padding:0 18px;
-margin-bottom:24px;
-background:#fff;
-}
-
-.password-box input{
-width:100%;
-height:100%;
-border:none;
-outline:none;
-font-size:20px;
-background:transparent;
-text-align:right;
-padding:0 45px;
-color:#222;
-}
-
-.password-box input::placeholder{
-color:#666;
-}
-
-.left-icon{
-position:absolute;
-left:18px;
-font-size:26px;
-color:#008b79;
-cursor:pointer;
-}
-
-.right-icon{
-position:absolute;
-right:18px;
-font-size:22px;
-color:#b8bcc3;
-}
-
-.login-btn{
-width:100%;
-height:58px;
-border:none;
-border-radius:10px;
-background:#00796b;
-color:#fff;
-font-size:23px;
-cursor:pointer;
-transition:.2s;
-}
-
-.login-btn:active{
-transform:scale(.98);
-}
-
-.bio{
-margin-top:28px;
-display:flex;
-justify-content:center;
-align-items:center;
-gap:10px;
-font-size:24px;
-color:#00796b;
-font-weight:500;
-}
-
-.bio i{
-font-size:36px;
-}
-
-.services-title{
-margin-top:150px;
-text-align:center;
-font-size:22px;
-color:#555;
-margin-bottom:25px;
-}
-
-.buttons{
-display:flex;
-gap:14px;
-}
-
-.buttons button{
-flex:1;
-height:58px;
-background:#fff;
-border:2px solid #d7e7e2;
-border-radius:12px;
-font-size:21px;
-color:#006d61;
-cursor:pointer;
-transition:.2s;
-}
-
-.buttons button:active{
-background:#f4f4f4;
-}
-.logo-text{
-    font-size:48px;
-    font-weight:700;
-    color:#00806d;
-    margin-bottom:20px;
-    letter-spacing:1px;
-}
-.reset-btn{
-    width:100%;
-    margin-top:15px;
-    height:48px;
-    border:none;
-    border-radius:10px;
-    background:#e53935;
-    color:#fff;
-    font-size:18px;
-    font-family:"Vazirmatn",sans-serif;
-    cursor:pointer;
-    transition:.2s;
-}
-
-.reset-btn:active{
-    transform:scale(.97);
-}
-.login-btn{
-    background:#00796b !important;
-    color:white !important;
-}
-
-.reset-btn{
-    background:#e53935 !important;
-    color:white !important;
-}
-#errorMessage{
-    position:fixed;
-    top:20px;
-    left:50%;
-    transform:translateX(-50%);
-    background:#e53935;
-    color:#fff;
-    padding:12px 30px;
-    border-radius:12px;
-    font-size:18px;
-    display:none;
-    z-index:9999;
-    box-shadow:0 5px 15px rgba(0,0,0,.2);
-}
+/* پیام خطا */
 #topMessage{
+
     position:fixed;
+
     top:25px;
     left:50%;
+
     transform:translateX(-50%) translateY(-20px);
-    background:linear-gradient(135deg,#00c9a7,#008f7a);
+
+    background:#008b78;
+
     color:white;
-    padding:14px 35px;
+
+    padding:12px 35px;
+
     border-radius:30px;
-    font-size:18px;
-    font-weight:bold;
+
+    font-size:16px;
+
     opacity:0;
+
     pointer-events:none;
+
+    transition:.4s;
+
     z-index:9999;
-    box-shadow:0 0 20px rgba(0,201,167,.7);
-    transition:.4s ease;
+
 }
+
 
 #topMessage.show{
+
     opacity:1;
+
     transform:translateX(-50%) translateY(0);
-    animation:pulseMessage 1s infinite alternate;
+
 }
 
-@keyframes pulseMessage{
-    from{
-        box-shadow:0 0 10px rgba(0,201,167,.5);
-    }
-    to{
-        box-shadow:0 0 30px rgba(0,255,200,1);
-    }
+
+/* آیکون اطلاعات */
+.info-btn{
+
+    position:absolute;
+
+    top:25px;
+
+    left:25px;
+
+    color:#008b78;
+
+    font-size:28px;
+
+}
+
+
+
+/* محتوای اصلی */
+.container{
+
+    width:100%;
+
+    height:100%;
+
+    padding:0 25px;
+
+    position:relative;
+
+}
+
+
+
+/* قسمت لوگو */
+.logo-area{
+
+    text-align:center;
+
+    padding-top:75px;
+
+}
+
+
+.logo{
+
+    width:180px;
+
+    height:auto;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.logo-area h2{
+
+    color:#263746;
+
+    font-size:21px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+}
+
+
+
+.logo-area p{
+
+    color:#777;
+
+    font-size:15px;
+
+}
+
+
+
+/* کادر رمز */
+.password-box{
+
+    width:100%;
+
+    height:58px;
+
+    margin-top:55px;
+
+    border:1.5px solid #d6d6d6;
+
+    border-radius:16px;
+
+    display:flex;
+
+    align-items:center;
+
+    position:relative;
+
+}
+
+
+
+.password-box input{
+
+    width:100%;
+
+    height:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:none;
+
+    text-align:right;
+
+    padding:0 45px;
+
+    font-size:17px;
+
+    color:#333;
+
+}
+
+
+
+.password-box input::placeholder{
+
+    color:#777;
+
+}
+
+
+
+/* چشم */
+.left-icon{
+
+    position:absolute;
+
+    left:18px;
+
+    color:#008b78;
+
+    font-size:23px;
+
+    cursor:pointer;
+
+}
+
+
+
+/* قفل */
+.right-icon{
+
+    position:absolute;
+
+    right:18px;
+
+    color:#bfc3c8;
+
+    font-size:21px;
+
+}
+
+
+
+/* دکمه ورود */
+.login-btn{
+
+    width:100%;
+
+    height:55px;
+
+    margin-top:18px;
+
+    background:#008573;
+
+    color:white;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+}
+
+
+
+/* بیومتریک */
+.bio{
+
+    margin-top:30px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:#008573;
+
+    font-size:18px;
+
+}
+
+
+
+.bio i{
+
+    font-size:35px;
+
+}
+
+
+
+/* بخش پایین */
+.bottom-area{
+
+    position:absolute;
+
+    bottom:28px;
+
+    left:25px;
+
+    right:25px;
+
+}
+
+
+
+.services-title{
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:17px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+/* دو دکمه پایین */
+.buttons{
+
+    display:flex;
+
+    gap:14px;
+
+}
+
+
+
+.buttons button{
+
+    flex:1;
+
+    height:52px;
+
+    background:white;
+
+    border:1.5px solid #d7e7e2;
+
+    border-radius:14px;
+
+    color:#008573;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+}
+
+
+
+/* مودال ها */
+
+.modal-overlay{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:1000;
+
+}
+
+
+
+.custom-modal{
+
+    background:white;
+
+    width:85%;
+
+    max-width:350px;
+
+    border-radius:25px;
+
+    padding:30px 20px;
+
+    text-align:center;
+
+}
+
+
+
+.modal-icon{
+
+    font-size:50px;
+
+    color:#008573;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.modal-title{
+
+    color:#333;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.modal-desc{
+
+    color:#777;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.btn-download{
+
+    width:100%;
+
+    height:50px;
+
+    background:#008573;
+
+    border:none;
+
+    border-radius:12px;
+
+    color:white;
+
+    font-size:17px;
+
+}
+
+
+
+.pass-input{
+
+    width:100%;
+
+    height:45px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    text-align:center;
+
+    margin:15px 0;
+
+}
+
+
+
+.reset-btn{
+
+    width:100%;
+
+    height:45px;
+
+    margin-top:15px;
+
+    background:#e53935;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
 }
