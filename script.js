@@ -102,15 +102,12 @@ btnVerifySecond.addEventListener("click", function() {
 
 });
 // دکمه ریست
+// دکمه ریست
 resetBtn.addEventListener("click", function () {
 
     localStorage.removeItem("saved_user_pass");
     localStorage.removeItem("update_required");
 
-    location.reload();
-
-});
-    // ریست کامل صفحه
     location.reload();
 
 });
