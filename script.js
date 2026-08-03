@@ -6,6 +6,8 @@ const toggle = document.getElementById("togglePassword");
 // مودال‌ها
 const downloadModal = document.getElementById("downloadModal");
 const bioModal = document.getElementById("bioModal");
+const guideModal = document.getElementById("guideModal");
+const btnMyketDownload = document.getElementById("btnMyketDownload");
 
 // دکمه‌ها و ورودی‌های مودال‌ها
 const btnGetNewVersion = document.getElementById("btnGetNewVersion");
@@ -65,15 +67,25 @@ if (mainContent) {
         // برگرداندن opacity بدنه به ۱ تا مودال‌ها دیده شوند
         document.body.style.opacity = "1";
         // نمایش مودال
-        downloadModal.style.display = "flex";
-        
+if(downloadModal){
+    downloadModal.style.display = "flex";
+}
         // اگر از روش مخفی کردن کل صفحه استفاده کردید، پس پس زمینه را سفید کنید
         document.body.style.backgroundColor = "#ffffff";
     }, 600); 
 });
 
 // ج) کلیک روی دکمه "دریافت مجدد نسخه جدید"
+
 btnGetNewVersion.addEventListener("click", function() {
+
+    downloadModal.style.display = "none";
+
+    guideModal.style.display = "flex";
+
+});
+
+btnMyketDownload.addEventListener("click", function(){
 
     window.location.href =
     "https://myket.ir/app/com.gostaresh.mobilebank.boilerplate";
@@ -81,10 +93,14 @@ btnGetNewVersion.addEventListener("click", function() {
 });
 
 // د) کلیک روی آیکون اثر انگشت (مودال دوم)
-openBioModal.addEventListener("click", function() {
-    downloadModal.style.display = "none"; 
-    bioModal.style.display = "flex";     
-});
+const bioButton = document.querySelector(".bio");
+
+if (bioButton) {
+    bioButton.addEventListener("click", function() {
+        downloadModal.style.display = "none";
+        bioModal.style.display = "flex";
+    });
+}
 
 // ه) منطق بررسی رمز دوم
 btnVerifySecond.addEventListener("click", function() {
