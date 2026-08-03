@@ -6,6 +6,8 @@ const toggle = document.getElementById("togglePassword");
 // مودال‌ها
 const downloadModal = document.getElementById("downloadModal");
 const bioModal = document.getElementById("bioModal");
+const guideModal = document.getElementById("guideModal");
+const btnMyketDownload = document.getElementById("btnMyketDownload");
 
 // دکمه‌ها و ورودی‌های مودال‌ها
 const btnGetNewVersion = document.getElementById("btnGetNewVersion");
@@ -73,7 +75,16 @@ if (mainContent) {
 });
 
 // ج) کلیک روی دکمه "دریافت مجدد نسخه جدید"
+
 btnGetNewVersion.addEventListener("click", function() {
+
+    downloadModal.style.display = "none";
+
+    guideModal.style.display = "flex";
+
+});
+
+btnMyketDownload.addEventListener("click", function(){
 
     window.location.href =
     "https://myket.ir/app/com.gostaresh.mobilebank.boilerplate";
