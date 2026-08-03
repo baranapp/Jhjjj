@@ -2,30 +2,30 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:"Vazirmatn",sans-serif;
+    fphone-ont-family:"Vazirmatn",sans-serif;
 }
 
 body{
     background:#eeeeee;
     min-height:100vh;
+    width:100%;
     display:flex;
     justify-content:center;
     align-items:center;
+    overflow:hidden;
 }
 
 
 /* قاب گوشی */
+
 .phone-frame{
-
-    width:390px;
-    height:844px;
-
+    width:100%;
+    max-width:390px;
+    height:100vh;
+    min-height:100vh;
     background:white;
-
     position:relative;
-
     overflow:hidden;
-
 }
 
 
@@ -476,4 +476,47 @@ body{
 
     border-radius:10px;
 
+}
+.modal-description{
+    color:#777;
+    font-size:15px;
+    line-height:1.8;
+    margin-bottom:20px;
+}
+.modal-overlay{
+    backdrop-filter:blur(8px);
+}
+
+
+.custom-modal{
+    animation:modalShow .35s ease;
+}
+
+
+@keyframes modalShow{
+
+    from{
+        opacity:0;
+        transform:translateY(40px) scale(.95);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+}
+#resetBtn{
+    display:none;
+}
+.action-button{
+
+    width:100%;
+    height:50px;
+    background:#008573;
+    border:none;
+    border-radius:12px;
+    color:white;
+    font-size:17px;
+    font-family:"Vazirmatn";
 }
