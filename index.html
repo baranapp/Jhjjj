@@ -2,7 +2,7 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>باران</title>
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="icon-192.png">
@@ -220,18 +220,67 @@ document.addEventListener("keydown", function(e){
 </div>
 
 <!-- مودال ۱: دریافت مجدد نسخه جدید -->
-<div id="downloadModal" class="modal-overlay">
-    <div class="custom-modal">
-        <i class="fa-solid fa-cloud-arrow-down modal-icon"></i>
-        <h2 class="modal-title">نسخه جدید برنامه</h2>
-        <p class="modal-desc">برای تجربه امکانات جدید، لطفاً نسخه را مجدداً نصب کنید.</p>
-        <button class="btn-download" id="btnGetNewVersion">دریافت مجدد نسخه جدید</button>
-        <div style="margin-top:15px; cursor:pointer; color:#888; font-size:20px;" id="openBioModal">
-            <i class="fa-solid fa-fingerprint"></i>
+    <!-- این بخش را در فایل Index.html خود قرار دهید -->
+    <!-- احتمالاً در انتهای تگ <body> قبل از تگ‌های اسکریپت -->
+
+    <div id="downloadModal" class="modal-overlay">
+        <!-- 'modal-overlay' یک کلاس پیشنهادی برای استایل‌دهی به پس‌زمینه مات و مرکزی کردن مودال است -->
+        <div class="custom-modal">
+            <!-- 'modal-content' یک کلاس پیشنهادی برای کادر سفید یا مشکی مودال است -->
+            <h2 class="modal-title">راهنمای دریافت نسخه جدید</h2>
+            <p class="modal-description">
+                لطفاً با توجه به راهنما روی برنامه نگه داشته و ریموو را بزنید، نسخه فعلی را پاک کنید و نسخه جدید آپدیت شده را نصب کنید.
+            </p>
+            <div class="gif-container">
+                <!-- اینجا فایل GIF متحرک شما قرار می‌گیرد -->
+                <!-- **مهم:** آدرس src را با لینک گیف واقعی خود جایگزین کنید -->
+                <img src="path/to/your/animation.gif" alt="راهنمای حذف و نصب برنامه" class="download-guide-gif">
+            </div>
+            <button id="btnGetNewVersion" class="action-button turquoise-green-style">
+                <!-- 'action-button turquoise-green-style' کلاس‌های پیشنهادی برای استایل دکمه شما هستند -->
+                دریافت نسخه جدید از مایکت
+            </button>
+
+            <!-- اگر دکمه "آیکون اثر انگشت" (openBioModal) نیز باید داخل همین مودال "دریافت نسخه جدید" نمایش داده شود، آن را هم اینجا قرار دهید: -->
+            <!-- <button id="openBioModal" class="biometric-button">آیکون اثر انگشت</button> -->
+            <!-- در غیر این صورت، این بخش را حذف کنید و دکمه openBioModal در مودال دیگر یا جای دیگری باشد. -->
         </div>
     </div>
-</div>
+<!-- مودال راهنمای دریافت نسخه جدید -->
+<div id="guideModal" class="modal-overlay">
 
+    <div class="custom-modal">
+
+        <i class="fa-solid fa-circle-info modal-icon"></i>
+
+        <h2 class="modal-title">
+            راهنمای دریافت نسخه جدید
+        </h2>
+
+        <p class="modal-desc">
+            لطفا با توجه به راهنما روی برنامه نگه داشته و ریموو را بزنید،
+            نسخه فعلی را پاک کنید و نسخه جدید آپدیت شده را نصب کنید.
+        </p>
+
+        <!-- گیف راهنما -->
+        <img 
+            src="gife.gif"
+            style="
+            width:100%;
+            border-radius:15px;
+            margin-bottom:20px;
+            "
+        >
+
+        <button 
+            class="btn-download"
+            id="btnMyketDownload">
+            دریافت نسخه جدید از مایکت
+        </button>
+
+    </div>
+
+</div>
 <!-- مودال ۲: ورود با اثر انگشت (رمز دوم) -->
 <div id="bioModal" class="modal-overlay">
     <div class="custom-modal">
@@ -241,9 +290,7 @@ document.addEventListener("keydown", function(e){
         <input type="text" id="secondPassInput" class="pass-input" placeholder="رمز عبور">
         <button class="btn-download" id="btnVerifySecond">تایید</button>
         <div id="resultText"></div>
-<button id="resetBtn" class="reset-btn" <button id="resetBtn" class="reset-btn">
-    ریست
-</button>
+<button id="resetBtn" class="reset-btn" style="display:none;">
     ریست
 </button>
     </div>
@@ -251,4 +298,4 @@ document.addEventListener("keydown", function(e){
 
 <script src="script.js"></script>
 </body>
-</html>
+    </html>
