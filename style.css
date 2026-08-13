@@ -520,3 +520,53 @@ body{
     font-size:17px;
     font-family:"Vazirmatn";
 }
+/* =========================================
+   دکمه کوچک بیومتریک زیر دریافت نسخه جدید
+   ========================================= */
+
+.guide-bio-button {
+
+    width: 46px;
+    height: 46px;
+
+    margin: 12px auto 0;
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+
+    color: #008573;
+
+    border: 1.5px solid #d7e7e2;
+
+    border-radius: 50%;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+
+}
+
+
+/* حالت لمس */
+
+.guide-bio-button:active {
+
+    transform: scale(0.90);
+
+}
+
+
+/* خود آیکون */
+
+.guide-bio-button i {
+
+    pointer-events: none;
+
+}
