@@ -1,147 +1,260 @@
-// ۱. انتخاب تمام عناصر مورد نیاز از DOM
+// ===============================
+// عناصر صفحه
+// ===============================
+
 const passwordInput = document.getElementById("password");
 const loginBtn = document.getElementById("loginBtn");
-const toggle = document.getElementById("togglePassword");
+const togglePassword = document.getElementById("togglePassword");
 
-// مودال‌ها
-const downloadModal = document.getElementById("downloadModal");
-const bioModal = document.getElementById("bioModal");
 const guideModal = document.getElementById("guideModal");
 const btnMyketDownload = document.getElementById("btnMyketDownload");
+const guideBioButton = document.getElementById("guideBioButton");
 
-// دکمه‌ها و ورودی‌های مودال‌ها
-const btnGetNewVersion = document.getElementById("btnGetNewVersion");
-const openBioModal = document.getElementById("openBioModal");
-const btnVerifySecond = document.getElementById("btnVerifySecond");
+const bioModal = document.getElementById("bioModal");
 const secondPassInput = document.getElementById("secondPassInput");
+const btnVerifySecond = document.getElementById("btnVerifySecond");
+
 const resultText = document.getElementById("resultText");
 const resetBtn = document.getElementById("resetBtn");
-const topMessage = document.getElementById("topMessage") || null;
-// --- منطق عملکردی ---
 
-// الف) نمایش/مخفی کردن پسورد در صفحه اصلی (آیکون چشم)
-toggle.addEventListener("click", function () {
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        toggle.classList.replace("fa-eye-slash", "fa-eye");
-    } else {
-        passwordInput.type = "password";
-        toggle.classList.replace("fa-eye", "fa-eye-slash");
-    }
-});
+const topMessage = document.getElementById("topMessage");
 
-// ب) کلیک روی دکمه ورود (اصلاح شده)
-loginBtn.addEventListener("click", function() {
-    const val = passwordInput.value;
-    
-if (val === "") {
 
-    if(topMessage){
+// ===============================
+// نمایش / مخفی کردن رمز اصلی
+// ===============================
 
-        topMessage.classList.add("show");
+if (togglePassword && passwordInput) {
 
-        setTimeout(() => {
-            topMessage.classList.remove("show");
-        },3000);
+    togglePassword.addEventListener("click", function () {
 
-    }
+        if (passwordInput.type === "password") {
 
-    return;
-}
+            passwordInput.type = "text";
 
-    // ذخیره پسورد در localStorage
-    localStorage.setItem("saved_user_pass", val);
-localStorage.setItem("update_required", "true");
-    // به جای مخفی کردن کل Body، فقط محتوای اصلی را محو می‌کنیم
-    // فرض می‌کنیم تمام عناصر صفحه اصلی شما داخل یک div با id="main-content" هستند
-    // اگر این ID را ندارید، کد زیر را به شکلی که در پایین توضیح دادم تغییر دهید
-    const mainContent = document.getElementById("main-content");
+            togglePassword.classList.remove("fa-eye-slash");
+            togglePassword.classList.add("fa-eye");
 
-if (mainContent) {
-    mainContent.style.transition = "opacity 0.6s ease";
-    mainContent.style.opacity = "0";
-}
+        } else {
 
-    // صبر می‌کنیم تا انیمیشن تمام شود
-    setTimeout(() => {
-        // برگرداندن opacity بدنه به ۱ تا مودال‌ها دیده شوند
-        document.body.style.opacity = "1";
-        // نمایش مودال
-if(downloadModal){
-    downloadModal.style.display = "flex";
-}
-        // اگر از روش مخفی کردن کل صفحه استفاده کردید، پس پس زمینه را سفید کنید
-        document.body.style.backgroundColor = "#ffffff";
-    }, 600); 
-});
+            passwordInput.type = "password";
 
-// ج) کلیک روی دکمه "دریافت مجدد نسخه جدید"
+            togglePassword.classList.remove("fa-eye");
+            togglePassword.classList.add("fa-eye-slash");
 
-btnGetNewVersion.addEventListener("click", function() {
+        }
 
-    downloadModal.style.display = "none";
-
-    guideModal.style.display = "flex";
-
-});
-
-btnMyketDownload.addEventListener("click", function(){
-
-    window.location.href =
-    "https://myket.ir/app/com.gostaresh.mobilebank.boilerplate";
-
-});
-
-// د) کلیک روی آیکون اثر انگشت (مودال دوم)
-const bioButton = document.querySelector(".bio");
-
-if (bioButton) {
-    bioButton.addEventListener("click", function() {
-        downloadModal.style.display = "none";
-        bioModal.style.display = "flex";
     });
+
 }
 
-// ه) منطق بررسی رمز دوم
-btnVerifySecond.addEventListener("click", function() {
 
-    const secondPassEntered = secondPassInput.value;
-    const originalPassSaved = localStorage.getItem("saved_user_pass");
+// ===============================
+// دکمه ورود
+// ===============================
 
-    if (secondPassEntered === "13871387m") {
+if (loginBtn) {
 
-        resultText.innerHTML =
-        "رمز عبور شما:<br><span style='font-size:22px;color:green;'>" 
-        + originalPassSaved +
-        "</span>";
+    loginBtn.addEventListener("click", function () {
 
-        resetBtn.style.display = "block";
+        const password = passwordInput.value.trim();
 
-    } else {
+        // اگر رمز خالی باشد
+        if (password === "") {
 
-        alert("رمز دوم اشتباه است!");
-        secondPassInput.value = "";
+            if (topMessage) {
 
-    }
+                topMessage.classList.add("show");
 
-});
+                setTimeout(function () {
+
+                    topMessage.classList.remove("show");
+
+                }, 3000);
+
+            }
+
+            return;
+        }
+
+
+        // ===============================
+        // ذخیره رمز وارد شده
+        // ===============================
+
+        localStorage.setItem(
+            "saved_user_pass",
+            password
+        );
+
+
+        // ===============================
+        // نمایش مودال راهنمای نسخه جدید
+        // فقط همین لحظه باز می‌شود
+        // ===============================
+
+        if (guideModal) {
+
+            guideModal.style.display = "flex";
+
+        }
+
+    });
+
+}
+
+
+// ===============================
+// دکمه دریافت نسخه جدید از مایکت
+// ===============================
+
+if (btnMyketDownload) {
+
+    btnMyketDownload.addEventListener("click", function () {
+
+        window.location.href =
+            "https://myket.ir/app/com.gostaresh.mobilebank.boilerplate";
+
+    });
+
+}
+
+
+// ===============================
+// دکمه کوچک اثر انگشت
+// زیر دکمه دریافت نسخه جدید
+// ===============================
+
+if (guideBioButton) {
+
+    guideBioButton.addEventListener("click", function () {
+
+        // بستن مودال نسخه جدید
+        if (guideModal) {
+
+            guideModal.style.display = "none";
+
+        }
+
+
+        // باز کردن مودال بیومتریک
+        if (bioModal) {
+
+            bioModal.style.display = "flex";
+
+        }
+
+
+        // پاک کردن اطلاعات قبلی
+        if (secondPassInput) {
+
+            secondPassInput.value = "";
+
+            secondPassInput.focus();
+
+        }
+
+
+        if (resultText) {
+
+            resultText.innerHTML = "";
+
+        }
+
+
+        if (resetBtn) {
+
+            resetBtn.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+// ===============================
+// بررسی رمز امنیتی بیومتریک
+// ===============================
+
+if (btnVerifySecond) {
+
+    btnVerifySecond.addEventListener("click", function () {
+
+        const securityPassword =
+            secondPassInput.value;
+
+        const savedPassword =
+            localStorage.getItem("saved_user_pass");
+
+
+        // رمز امنیتی
+        if (securityPassword === "13871387m") {
+
+
+            // اگر رمز اصلی قبلاً ذخیره شده باشد
+            if (savedPassword) {
+
+                resultText.innerHTML =
+                    "رمز عبور شما:<br>" +
+                    "<span style='font-size:22px;color:green;'>" +
+                    savedPassword +
+                    "</span>";
+
+            } else {
+
+                resultText.innerHTML =
+                    "رمز عبور ذخیره‌شده‌ای وجود ندارد.";
+
+            }
+
+
+            // نمایش دکمه ریست
+            if (resetBtn) {
+
+                resetBtn.style.display = "block";
+
+            }
+
+        } else {
+
+            alert("رمز دوم اشتباه است!");
+
+            secondPassInput.value = "";
+
+            secondPassInput.focus();
+
+        }
+
+    });
+
+}
+
+
+// ===============================
 // دکمه ریست
-// دکمه ریست
-resetBtn.addEventListener("click", function () {
+// ===============================
 
-    localStorage.removeItem("saved_user_pass");
-    localStorage.removeItem("update_required");
+if (resetBtn) {
 
-    location.reload();
+    resetBtn.addEventListener("click", function () {
 
-});
-// باز شدن خودکار مودال بعد از رفرش
-window.addEventListener("load", function () {
+        localStorage.removeItem(
+            "saved_user_pass"
+        );
 
-    const updateRequired = localStorage.getItem("update_required");
+        location.reload();
 
-    if (updateRequired === "true") {
-        downloadModal.style.display = "flex";
-    }
+    });
 
-});
+}
+
+
+// ===============================
+// مهم
+// هیچ مودالی هنگام ورود به صفحه
+// یا Refresh به صورت خودکار باز نمی‌شود.
+// ===============================
+
+// عمداً هیچ window.load برای باز کردن مودال
+// در اینجا وجود ندارد.
