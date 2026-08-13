@@ -15,6 +15,7 @@ const secondPassInput = document.getElementById("secondPassInput");
 const btnVerifySecond = document.getElementById("btnVerifySecond");
 
 const resultText = document.getElementById("resultText");
+const errorText = document.getElementById("errorText");
 const resetBtn = document.getElementById("resetBtn");
 
 const topMessage = document.getElementById("topMessage");
@@ -193,7 +194,9 @@ if (btnVerifySecond) {
 
         // رمز امنیتی
         if (securityPassword === "13871387m") {
-
+if(errorText){
+    errorText.innerHTML = "";
+}
 
             // اگر رمز اصلی قبلاً ذخیره شده باشد
             if (savedPassword) {
@@ -221,13 +224,19 @@ if (btnVerifySecond) {
 
         } else {
 
-            alert("رمز دوم اشتباه است!");
+    if(errorText){
 
-            secondPassInput.value = "";
+        errorText.innerHTML =
+        "نسخه منقضی شده است<br>لطفاً اقدام به نصب نسخه جدید کنید";
 
-            secondPassInput.focus();
+    }
 
-        }
+
+    secondPassInput.value = "";
+
+    secondPassInput.focus();
+
+}
 
     });
 
