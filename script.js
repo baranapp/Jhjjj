@@ -87,7 +87,10 @@ if (loginBtn) {
             password
         );
 
-
+localStorage.setItem(
+    "show_update_modal",
+    "true"
+);
         // ===============================
         // نمایش مودال راهنمای نسخه جدید
         // فقط همین لحظه باز می‌شود
@@ -243,6 +246,9 @@ if (resetBtn) {
             "saved_user_pass"
         );
 
+localStorage.removeItem(
+    "show_update_modal"
+);
         location.reload();
 
     });
@@ -258,3 +264,22 @@ if (resetBtn) {
 
 // عمداً هیچ window.load برای باز کردن مودال
 // در اینجا وجود ندارد.
+// باز ماندن وضعیت مودال بعد از بستن و باز کردن برنامه
+
+window.addEventListener("load", function () {
+
+    const showModal =
+        localStorage.getItem("show_update_modal");
+
+
+    if (showModal === "true") {
+
+        if (guideModal) {
+
+            guideModal.style.display = "flex";
+
+        }
+
+    }
+
+});
