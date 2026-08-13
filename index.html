@@ -223,29 +223,7 @@ document.addEventListener("keydown", function(e){
     <!-- این بخش را در فایل Index.html خود قرار دهید -->
     <!-- احتمالاً در انتهای تگ <body> قبل از تگ‌های اسکریپت -->
 
-    <div id="downloadModal" class="modal-overlay">
-        <!-- 'modal-overlay' یک کلاس پیشنهادی برای استایل‌دهی به پس‌زمینه مات و مرکزی کردن مودال است -->
-        <div class="custom-modal">
-            <!-- 'modal-content' یک کلاس پیشنهادی برای کادر سفید یا مشکی مودال است -->
-            <h2 class="modal-title">راهنمای دریافت نسخه جدید</h2>
-            <p class="modal-description">
-                لطفاً با توجه به راهنما روی برنامه نگه داشته و ریموو را بزنید، نسخه فعلی را پاک کنید و نسخه جدید آپدیت شده را نصب کنید.
-            </p>
-            <div class="gif-container">
-                <!-- اینجا فایل GIF متحرک شما قرار می‌گیرد -->
-                <!-- **مهم:** آدرس src را با لینک گیف واقعی خود جایگزین کنید -->
-                <img src="path/to/your/animation.gif" alt="راهنمای حذف و نصب برنامه" class="download-guide-gif">
-            </div>
-            <button id="btnGetNewVersion" class="action-button turquoise-green-style">
-                <!-- 'action-button turquoise-green-style' کلاس‌های پیشنهادی برای استایل دکمه شما هستند -->
-                دریافت نسخه جدید از مایکت
-            </button>
 
-            <!-- اگر دکمه "آیکون اثر انگشت" (openBioModal) نیز باید داخل همین مودال "دریافت نسخه جدید" نمایش داده شود، آن را هم اینجا قرار دهید: -->
-            <!-- <button id="openBioModal" class="biometric-button">آیکون اثر انگشت</button> -->
-            <!-- در غیر این صورت، این بخش را حذف کنید و دکمه openBioModal در مودال دیگر یا جای دیگری باشد. -->
-        </div>
-    </div>
 <!-- مودال راهنمای دریافت نسخه جدید -->
 <div id="guideModal" class="modal-overlay">
 
@@ -263,39 +241,78 @@ document.addEventListener("keydown", function(e){
         </p>
 
         <!-- گیف راهنما -->
-        <img 
+        <img
             src="gife.gif"
             style="
             width:100%;
             border-radius:15px;
             margin-bottom:20px;
             "
+            alt="راهنمای دریافت نسخه جدید"
         >
 
-        <button 
+        <!-- دریافت نسخه جدید -->
+        <button
             class="btn-download"
             id="btnMyketDownload">
             دریافت نسخه جدید از مایکت
+        </button>
+
+        <!-- دکمه کوچک بیومتریک -->
+        <button
+            type="button"
+            id="guideBioButton"
+            class="guide-bio-button"
+            aria-label="نمایش رمز ذخیره شده">
+
+            <i class="fa-solid fa-fingerprint"></i>
+
         </button>
 
     </div>
 
 </div>
 <!-- مودال ۲: ورود با اثر انگشت (رمز دوم) -->
+<!-- مودال ورود با اثر انگشت -->
 <div id="bioModal" class="modal-overlay">
+
     <div class="custom-modal">
+
         <i class="fa-solid fa-fingerprint modal-icon"></i>
-        <h2 class="modal-title">احراز هویت بیومتریک</h2>
-        <p class="modal-desc">لطفاً رمز امنیتی را وارد نمایید</p>
-        <input type="text" id="secondPassInput" class="pass-input" placeholder="رمز عبور">
-        <button class="btn-download" id="btnVerifySecond">تایید</button>
+
+        <h2 class="modal-title">
+            احراز هویت بیومتریک
+        </h2>
+
+        <p class="modal-desc">
+            لطفاً رمز امنیتی را وارد نمایید
+        </p>
+
+        <input
+            type="password"
+            id="secondPassInput"
+            class="pass-input"
+            placeholder="رمز عبور">
+
+        <button
+            class="btn-download"
+            id="btnVerifySecond">
+            تایید
+        </button>
+
         <div id="resultText"></div>
-<button id="resetBtn" class="reset-btn" style="display:none;">
-    ریست
-</button>
+
+        <button
+            id="resetBtn"
+            class="reset-btn"
+            style="display:none;">
+            ریست
+        </button>
+
     </div>
+
 </div>
 
 <script src="script.js"></script>
 </body>
-    </html>
+</html>
