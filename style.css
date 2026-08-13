@@ -527,40 +527,32 @@ body{
 .guide-bio-button {
     width: 100%;
     height: 50px;
-    margin: 12px auto 0;
-    padding: 0;
+    margin-top: 12px;
 
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
 
-    background: #ffffff;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+
     color: #008573;
+    font-family: "Vazirmatn", sans-serif;
+    font-size: 18px;
 
-    border: 1.5px solid #d7e7e2;
-    border-radius: 12px;
-
-    font-size: 22px;
     cursor: pointer;
-
     transition: 0.2s ease;
 }
 
-.guide-bio-button:active {
-    transform: scale(0.97);
-}
-
 .guide-bio-button i {
+    font-size: 35px;
     pointer-events: none;
 }
 
-
-/* حالت لمس */
-
 .guide-bio-button:active {
-
-    transform: scale(0.90);
-
+    transform: scale(0.95);
 }
 
 
@@ -570,4 +562,4 @@ body{
 
     pointer-events: none;
 
-    }
+}
