@@ -257,7 +257,16 @@ body{
 
 }
 
+.login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
 
+.login-btn i {
+    font-size: 21px;
+}
 
 /* بیومتریک */
 .bio{
@@ -583,4 +592,17 @@ button,
 /* جلوگیری از هایلایت شدن هنگام لمس */
 * {
     -webkit-tap-highlight-color: transparent;
+}
+#errorText {
+
+    margin-top: 15px;
+
+    color: #e53935;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    line-height: 1.8;
+
 }
