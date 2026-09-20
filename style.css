@@ -704,3 +704,133 @@ button,
         transform: translateY(-3px);
     }
 }
+/* =========================================
+   خط سبز متحرک دور مودال
+   ========================================= */
+
+.custom-modal{
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+}
+
+/* خط متحرک دور مودال */
+.custom-modal::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:25px;
+    padding:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            transparent 35%,
+            #00b894 50%,
+            transparent 65%,
+            transparent 100%
+        );
+
+    background-size:300% 100%;
+
+    animation:modalBorderMove 2.5s linear infinite;
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+
+    pointer-events:none;
+    z-index:10;
+}
+
+@keyframes modalBorderMove{
+    0%{
+        background-position:100% 0;
+    }
+
+    25%{
+        background-position:0 0;
+    }
+
+    50%{
+        background-position:0 100%;
+    }
+
+    75%{
+        background-position:100% 100%;
+    }
+
+    100%{
+        background-position:100% 0;
+    }
+}
+
+
+/* =========================================
+   خط سبز متحرک دور دکمه
+   ========================================= */
+
+.btn-download{
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+}
+
+/* خط متحرک دور دکمه */
+.btn-download::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:12px;
+    padding:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            transparent 35%,
+            #7fffe3 50%,
+            transparent 65%,
+            transparent 100%
+        );
+
+    background-size:300% 100%;
+
+    animation:buttonBorderMove 2s linear infinite;
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+
+    pointer-events:none;
+    z-index:2;
+}
+
+@keyframes buttonBorderMove{
+    0%{
+        background-position:100% 0;
+    }
+
+    25%{
+        background-position:0 0;
+    }
+
+    50%{
+        background-position:0 100%;
+    }
+
+    75%{
+        background-position:100% 100%;
+    }
+
+    100%{
+        background-position:100% 0;
+    }
+            }
