@@ -745,120 +745,62 @@ button,
         transform: translateY(-3px);
     }
 }
-/* =========================================
-   خط نورانی متحرک دور مودال
-   ========================================= */
-
+/* خط باریک متحرک دور کادر */
 .custom-modal {
     position: relative;
     overflow: hidden;
-    border: 2px solid transparent;
 }
 
-/* لایه نور */
+/* خود خط */
 .custom-modal::after {
     content: "";
     position: absolute;
-    inset: -2px;
-    border-radius: 27px;
-
-    background: conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        transparent 300deg,
-        #00ffb3 330deg,
-        #00ff66 345deg,
-        transparent 360deg
-    );
-
-    animation: modalLight 2.2s linear infinite;
-
-    z-index: 0;
+    width: 45px;
+    height: 2px;
+    background: #00bfa5;
+    box-shadow: 0 0 6px #00bfa5;
+    z-index: 20;
     pointer-events: none;
 
-    /* وسط کادر خالی بماند */
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-
-    padding: 2px;
+    animation: borderLine 4s linear infinite;
 }
 
-/* محتوای مودال روی خط قرار بگیرد */
-.custom-modal > * {
-    position: relative;
-    z-index: 2;
-}
+/* حرکت خط: راست → بالا → چپ → پایین */
+@keyframes borderLine {
 
-/* حرکت دور کادر */
-@keyframes modalLight {
-    from {
+    /* شروع: وسط ضلع راست */
+    0% {
+        top: 50%;
+        right: 0;
+        transform: rotate(90deg);
+    }
+
+    /* رسیدن به بالای سمت راست */
+    25% {
+        top: 0;
+        right: 0;
         transform: rotate(0deg);
     }
 
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
-/* =========================================
-   خط نورانی متحرک دور دکمه
-   ========================================= */
-
-.btn-download {
-    position: relative;
-    overflow: hidden;
-    border: 2px solid transparent !important;
-}
-
-/* نور متحرک */
-.btn-download::after {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    border-radius: 14px;
-
-    background: conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        transparent 300deg,
-        #9affdf 330deg,
-        #00ff9d 345deg,
-        transparent 360deg
-    );
-
-    animation: buttonLight 1.7s linear infinite;
-
-    z-index: 0;
-    pointer-events: none;
-
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-
-    padding: 2px;
-}
-
-/* متن و آیکون روی نور باشند */
-.btn-download > * {
-    position: relative;
-    z-index: 2;
-}
-
-@keyframes buttonLight {
-    from {
+    /* حرکت روی ضلع بالا به سمت چپ */
+    50% {
+        top: 0;
+        right: calc(100% - 45px);
         transform: rotate(0deg);
     }
 
-    to {
-        transform: rotate(360deg);
+    /* حرکت روی ضلع چپ به پایین */
+    75% {
+        top: calc(100% - 45px);
+        right: calc(100% - 45px);
+        transform: rotate(90deg);
+    }
+
+    /* رسیدن به پایین و برگشت به سمت راست */
+    100% {
+        top: calc(100% - 45px);
+        right: 0;
+        transform: rotate(0deg);
     }
 }
 /* =========================
