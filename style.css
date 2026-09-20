@@ -620,3 +620,705 @@ button,
     object-fit:contain;
     border-radius:10px;
 }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    fphone-ont-family:"Vazirmatn",sans-serif;
+}
+
+body{
+    background:#eeeeee;
+    min-height:100vh;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+
+/* قاب گوشی */
+
+.phone-frame{
+    width:100%;
+    max-width:390px;
+    height:100vh;
+    min-height:100vh;
+    background:white;
+    position:relative;
+    overflow:hidden;
+}
+
+
+/* پیام خطا */
+#topMessage{
+
+    position:fixed;
+
+    top:25px;
+    left:50%;
+
+    transform:translateX(-50%) translateY(-20px);
+
+    background:#008b78;
+
+    color:white;
+
+    padding:12px 35px;
+
+    border-radius:30px;
+
+    font-size:16px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.4s;
+
+    z-index:9999;
+
+}
+
+
+#topMessage.show{
+
+    opacity:1;
+
+    transform:translateX(-50%) translateY(0);
+
+}
+
+
+/* آیکون اطلاعات */
+.info-btn{
+
+    position:absolute;
+
+    top:25px;
+
+    left:25px;
+
+    color:#008b78;
+
+    font-size:28px;
+
+}
+
+
+
+/* محتوای اصلی */
+.container{
+
+    width:100%;
+
+    height:100%;
+
+    padding:0 25px;
+
+    position:relative;
+
+}
+
+
+
+/* قسمت لوگو */
+.logo-area{
+
+    text-align:center;
+
+    padding-top:75px;
+
+}
+
+
+.logo{
+
+    width:180px;
+
+    height:auto;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.logo-area h2{
+
+    color:#263746;
+
+    font-size:21px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+}
+
+
+
+.logo-area p{
+
+    color:#777;
+
+    font-size:15px;
+
+}
+
+
+
+/* کادر رمز */
+.password-box{
+
+    width:100%;
+
+    height:58px;
+
+    margin-top:55px;
+
+    border:1.5px solid #d6d6d6;
+
+    border-radius:16px;
+
+    display:flex;
+
+    align-items:center;
+
+    position:relative;
+
+}
+
+
+
+.password-box input{
+
+    width:100%;
+
+    height:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:none;
+
+    text-align:right;
+
+    padding:0 45px;
+
+    font-size:17px;
+
+    color:#333;
+
+}
+
+
+
+.password-box input::placeholder{
+
+    color:#777;
+
+}
+
+
+
+/* چشم */
+.left-icon{
+
+    position:absolute;
+
+    left:18px;
+
+    color:#008b78;
+
+    font-size:23px;
+
+    cursor:pointer;
+
+}
+
+
+
+/* قفل */
+.right-icon{
+
+    position:absolute;
+
+    right:18px;
+
+    color:#bfc3c8;
+
+    font-size:21px;
+
+}
+
+
+
+/* دکمه ورود */
+.login-btn{
+
+    width:100%;
+
+    height:55px;
+
+    margin-top:18px;
+
+    background:#008573;
+
+    color:white;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+}
+
+.login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.login-btn i {
+    font-size: 21px;
+}
+
+/* بیومتریک */
+.bio{
+
+    margin-top:30px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:#008573;
+
+    font-size:18px;
+
+}
+
+
+
+.bio i{
+
+    font-size:35px;
+
+}
+
+
+
+/* بخش پایین */
+.bottom-area{
+
+    position:absolute;
+
+    bottom:28px;
+
+    left:25px;
+
+    right:25px;
+
+}
+
+
+
+.services-title{
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:17px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+/* دو دکمه پایین */
+.buttons{
+
+    display:flex;
+
+    gap:14px;
+
+}
+
+
+
+.buttons button{
+
+    flex:1;
+
+    height:52px;
+
+    background:white;
+
+    border:1.5px solid #d7e7e2;
+
+    border-radius:14px;
+
+    color:#008573;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+}
+
+
+
+/* مودال ها */
+
+.modal-overlay{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:1000;
+
+}
+
+
+
+.custom-modal{
+
+    background:white;
+
+    width:85%;
+
+    max-width:350px;
+
+    border-radius:25px;
+
+    padding:30px 20px;
+
+    text-align:center;
+
+}
+
+
+
+.modal-icon{
+
+    font-size:50px;
+
+    color:#008573;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.modal-title{
+
+    color:#333;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.modal-desc{
+
+    color:#777;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.btn-download{
+
+    width:100%;
+
+    height:50px;
+
+    background:#008573;
+
+    border:none;
+
+    border-radius:12px;
+
+    color:white;
+
+    font-size:17px;
+
+}
+
+
+
+.pass-input{
+
+    width:100%;
+
+    height:45px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    text-align:center;
+
+    margin:15px 0;
+
+}
+
+
+
+.reset-btn{
+
+    width:100%;
+
+    height:45px;
+
+    margin-top:15px;
+
+    background:#e53935;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+}
+.modal-description{
+    color:#777;
+    font-size:15px;
+    line-height:1.8;
+    margin-bottom:20px;
+}
+.modal-overlay{
+    backdrop-filter:blur(8px);
+}
+
+
+.custom-modal{
+    animation:modalShow .35s ease;
+}
+
+
+@keyframes modalShow{
+
+    from{
+        opacity:0;
+        transform:translateY(40px) scale(.95);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+}
+#resetBtn{
+    display:none;
+}
+.action-button{
+
+    width:100%;
+    height:50px;
+    background:#008573;
+    border:none;
+    border-radius:12px;
+    color:white;
+    font-size:17px;
+    font-family:"Vazirmatn";
+}
+/* =========================================
+   دکمه کوچک بیومتریک زیر دریافت نسخه جدید
+   ========================================= */
+
+.guide-bio-button {
+    width: 100%;
+    height: 50px;
+    margin-top: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    background: transparent;
+    border: none;
+    border-radius: 0;
+
+    color: #008573;
+    font-family: "Vazirmatn", sans-serif;
+    font-size: 18px;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.guide-bio-button i {
+    font-size: 35px;
+    pointer-events: none;
+}
+
+.guide-bio-button:active {
+    transform: scale(0.95);
+}
+
+
+/* خود آیکون */
+
+.guide-bio-button i {
+
+    pointer-events: none;
+
+}
+/* جلوگیری از انتخاب و رفتارهای لمسی هنگام نگه داشتن */
+html,
+body,
+button,
+.bio,
+.guide-bio-button,
+.login-btn,
+.buttons button,
+.info-btn,
+.modal-overlay,
+.custom-modal {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    touch-action: manipulation;
+}
+
+/* جلوگیری از هایلایت شدن هنگام لمس */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+#errorText {
+
+    margin-top: 15px;
+
+    color: #e53935;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    line-height: 1.8;
+
+}
+.top-image{
+    width:100%;
+    text-align:center;
+    position:absolute;
+    top:15px;
+    left:0;
+}
+
+.top-image img{
+    width:45px;
+    height:45px;
+    object-fit:contain;
+    border-radius:10px;
+}
+/* =========================================
+   انیمیشن آیکون دانلود
+   ========================================= */
+
+#btnMyketDownload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#btnMyketDownload i {
+    font-size: 20px;
+    animation: downloadBounce 1.2s ease-in-out infinite;
+    transform-origin: center;
+}
+
+/* حرکت بالا و پایین آیکون */
+@keyframes downloadBounce {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    25% {
+        transform: translateY(-5px);
+    }
+
+    50% {
+        transform: translateY(2px);
+    }
+
+    75% {
+        transform: translateY(-3px);
+    }
+}
+
+
+/* =========================================
+   انیمیشن آیکون اطلاعات بالای مودال
+   ========================================= */
+
+.modal-icon {
+    display: inline-block;
+    animation: infoFloat 2s ease-in-out infinite;
+    transform-origin: center;
+}
+
+/* شناور شدن + کمی بزرگ و کوچک شدن */
+@keyframes infoFloat {
+
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-7px) scale(1.08);
+    }
+}
+
+
+/* درخشش خیلی ظریف آیکون اطلاعات */
+
+.modal-icon {
+    filter: drop-shadow(0 0 0 rgba(0, 133, 115, 0));
+    animation:
+        infoFloat 2s ease-in-out infinite,
+        infoGlow 2s ease-in-out infinite;
+}
+
+@keyframes infoGlow {
+
+    0%, 100% {
+        filter: drop-shadow(0 0 0 rgba(0, 133, 115, 0));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 8px rgba(0, 133, 115, 0.45));
+    }
+}
