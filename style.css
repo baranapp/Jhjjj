@@ -1242,83 +1242,50 @@ button,
     object-fit:contain;
     border-radius:10px;
 }
-/* =========================================
-   انیمیشن آیکون دانلود
-   ========================================= */
+/* ==============================
+   لوگوی متحرک باران در مودال
+   ============================== */
 
-#btnMyketDownload {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
+.modal-logo {
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 18px;
 
-#btnMyketDownload i {
-    font-size: 20px;
-    animation: downloadBounce 1.2s ease-in-out infinite;
+    animation:
+        baranLogoFloat 2.2s ease-in-out infinite,
+        baranLogoGlow 2.2s ease-in-out infinite;
+
     transform-origin: center;
 }
 
-/* حرکت بالا و پایین آیکون */
-@keyframes downloadBounce {
-
+/* حرکت نرم بالا و پایین + کمی چرخش */
+@keyframes baranLogoFloat {
     0%, 100% {
-        transform: translateY(0);
+        transform: translateY(0) rotate(0deg) scale(1);
     }
 
     25% {
-        transform: translateY(-5px);
+        transform: translateY(-6px) rotate(-2deg) scale(1.03);
     }
 
     50% {
-        transform: translateY(2px);
+        transform: translateY(-10px) rotate(0deg) scale(1.07);
     }
 
     75% {
-        transform: translateY(-3px);
+        transform: translateY(-6px) rotate(2deg) scale(1.03);
     }
 }
 
-
-/* =========================================
-   انیمیشن آیکون اطلاعات بالای مودال
-   ========================================= */
-
-.modal-icon {
-    display: inline-block;
-    animation: infoFloat 2s ease-in-out infinite;
-    transform-origin: center;
-}
-
-/* شناور شدن + کمی بزرگ و کوچک شدن */
-@keyframes infoFloat {
-
+/* درخشش نرم اطراف لوگو */
+@keyframes baranLogoGlow {
     0%, 100% {
-        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 0 2px rgba(0, 140, 255, 0.15));
     }
 
     50% {
-        transform: translateY(-7px) scale(1.08);
-    }
-}
-
-
-/* درخشش خیلی ظریف آیکون اطلاعات */
-
-.modal-icon {
-    filter: drop-shadow(0 0 0 rgba(0, 133, 115, 0));
-    animation:
-        infoFloat 2s ease-in-out infinite,
-        infoGlow 2s ease-in-out infinite;
-}
-
-@keyframes infoGlow {
-
-    0%, 100% {
-        filter: drop-shadow(0 0 0 rgba(0, 133, 115, 0));
-    }
-
-    50% {
-        filter: drop-shadow(0 0 8px rgba(0, 133, 115, 0.45));
+        filter: drop-shadow(0 0 13px rgba(0, 140, 255, 0.65));
     }
 }
