@@ -705,132 +705,118 @@ button,
     }
 }
 /* =========================================
-   خط سبز متحرک دور مودال
+   خط نورانی متحرک دور مودال
    ========================================= */
 
-.custom-modal{
-    position:relative;
-    overflow:hidden;
-    isolation:isolate;
+.custom-modal {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
 }
 
-/* خط متحرک دور مودال */
-.custom-modal::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    border-radius:25px;
-    padding:2px;
+/* لایه نور */
+.custom-modal::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 27px;
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent 0%,
-            transparent 35%,
-            #00b894 50%,
-            transparent 65%,
-            transparent 100%
-        );
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        transparent 300deg,
+        #00ffb3 330deg,
+        #00ff66 345deg,
+        transparent 360deg
+    );
 
-    background-size:300% 100%;
+    animation: modalLight 2.2s linear infinite;
 
-    animation:modalBorderMove 2.5s linear infinite;
+    z-index: 0;
+    pointer-events: none;
 
+    /* وسط کادر خالی بماند */
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
 
-    -webkit-mask-composite:xor;
-    mask-composite:exclude;
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
 
-    pointer-events:none;
-    z-index:10;
+    padding: 2px;
 }
 
-@keyframes modalBorderMove{
-    0%{
-        background-position:100% 0;
+/* محتوای مودال روی خط قرار بگیرد */
+.custom-modal > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* حرکت دور کادر */
+@keyframes modalLight {
+    from {
+        transform: rotate(0deg);
     }
 
-    25%{
-        background-position:0 0;
-    }
-
-    50%{
-        background-position:0 100%;
-    }
-
-    75%{
-        background-position:100% 100%;
-    }
-
-    100%{
-        background-position:100% 0;
+    to {
+        transform: rotate(360deg);
     }
 }
 
 
 /* =========================================
-   خط سبز متحرک دور دکمه
+   خط نورانی متحرک دور دکمه
    ========================================= */
 
-.btn-download{
-    position:relative;
-    overflow:hidden;
-    isolation:isolate;
+.btn-download {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent !important;
 }
 
-/* خط متحرک دور دکمه */
-.btn-download::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    border-radius:12px;
-    padding:2px;
+/* نور متحرک */
+.btn-download::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 14px;
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent 0%,
-            transparent 35%,
-            #7fffe3 50%,
-            transparent 65%,
-            transparent 100%
-        );
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        transparent 300deg,
+        #9affdf 330deg,
+        #00ff9d 345deg,
+        transparent 360deg
+    );
 
-    background-size:300% 100%;
+    animation: buttonLight 1.7s linear infinite;
 
-    animation:buttonBorderMove 2s linear infinite;
+    z-index: 0;
+    pointer-events: none;
 
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
 
-    -webkit-mask-composite:xor;
-    mask-composite:exclude;
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
 
-    pointer-events:none;
-    z-index:2;
+    padding: 2px;
 }
 
-@keyframes buttonBorderMove{
-    0%{
-        background-position:100% 0;
+/* متن و آیکون روی نور باشند */
+.btn-download > * {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes buttonLight {
+    from {
+        transform: rotate(0deg);
     }
 
-    25%{
-        background-position:0 0;
+    to {
+        transform: rotate(360deg);
     }
-
-    50%{
-        background-position:0 100%;
-    }
-
-    75%{
-        background-position:100% 100%;
-    }
-
-    100%{
-        background-position:100% 0;
-    }
-            }
+}
