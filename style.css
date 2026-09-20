@@ -746,68 +746,7 @@ button,
     }
 }
 
-/* خط صاف متحرک دور کادر */
-.custom-modal {
-    position: relative;
-    overflow: hidden;
-}
 
-.custom-modal::after {
-    content: "";
-    position: absolute;
-    background: #00bfa5;
-    box-shadow: 0 0 5px #00bfa5;
-    z-index: 20;
-    pointer-events: none;
-
-    width: 45px;
-    height: 2px;
-
-    animation: straightLine 4s linear infinite;
-}
-
-@keyframes straightLine {
-
-    /* پایینِ سمت راست */
-    0% {
-        top: calc(100% - 2px);
-        right: 0;
-        width: 45px;
-        height: 2px;
-    }
-
-    /* حرکت به بالای ضلع راست */
-    25% {
-        top: 0;
-        right: 0;
-        width: 2px;
-        height: 45px;
-    }
-
-    /* حرکت روی ضلع بالا به سمت چپ */
-    50% {
-        top: 0;
-        right: calc(100% - 45px);
-        width: 45px;
-        height: 2px;
-    }
-
-    /* حرکت روی ضلع چپ به پایین */
-    75% {
-        top: calc(100% - 45px);
-        right: calc(100% - 2px);
-        width: 2px;
-        height: 45px;
-    }
-
-    /* حرکت روی ضلع پایین به سمت راست */
-    100% {
-        top: calc(100% - 2px);
-        right: 0;
-        width: 45px;
-        height: 2px;
-    }
-}
 /* =========================
    لوگوی متحرک باران
 ========================= */
